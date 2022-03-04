@@ -1,32 +1,30 @@
+import { createServer } from 'http';
+import { server_secrets } from './config/index.js';
+import { logger } from './utils/logger.js';
+import { version } from '../package.json';
+
 const express = require('express');
-const expressPinoLogger = require('express-pino-logger');
-const { createServer } = require('http');
-const cors = require('cors');
-let config = require('config');
-config = config.get('config');
+const loaders = require('./loaders');
 
-const logger = require('./utils/logger');
-const { version } = require('../package.json');
+async function startServer() {
+  const app = express();
 
-const corsOrigin = config.get('corsOrigin');
-const port = config.get('port');
-const host = config.get('host');
+  // ! ➡️ Create Server
+  const httpServer = createServer(app);
 
-const app = express();
+  // ! Start Express
+  await loaders({ expressApp: app });
 
-// ! Configure Express-pino-logger ➡️
-const loggerMidlleware = expressPinoLogger({
-  logger: logger,
-  autoLogging: true,
-});
-app.use(loggerMidlleware);
-// ! Express-pino-logger configration ⬅️
+  // ! ➡️ Server Secrets Object literal
+  const config = server_secrets;
 
-const httpServer = createServer(app);
+  // ! ➡️ Start Server
+  httpServer.listen(config.port, () => {
+    logger.info(`🚀 Server version ${version} is running 🛼`);
+    logger.info(
+      `📶 http://${config.host}:${config.port} againt corsOrigin ${config.corsOrigin}`
+    );
+  });
+}
 
-app.get('/', (_, res) => res.send(`server is up on version ${version}`));
-
-httpServer.listen(port, host, () => {
-  logger.info(`🚀 Server version ${version} is running 🛼`);
-  logger.info(`http://${host}:${port}`);
-});
+startServer();

@@ -2,20 +2,25 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Node JavaScript BoilerPlate",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon src/app.js"
+    "server": "nodemon src/server.js"
   },
   "author": "Samran Tariq",
   "license": "MIT",
   "dependencies": {
     "config": "^3.3.6",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-pino-logger": "^7.0.0",
+    "mongoose": "^6.2.4",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "pino": "^7.5.0",
-    "pino-pretty": "^7.2.0"
+    "pino-pretty": "^7.2.0",
+    "uuid": "^8.3.2"
   }
 }
