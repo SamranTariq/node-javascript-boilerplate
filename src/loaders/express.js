@@ -23,6 +23,9 @@ export default async ({ app }) => {
 
   // --> ...More middlewares
 
+  // ! BELOW CODE IS FOR --> Make it able to use routes
+  require('../api/v1/routes/index')(app);
+
   // ! ➡️ Health Testing API Calls
 
   app.get('/', (_, res) => res.send(`server is up on version ${version}`));
