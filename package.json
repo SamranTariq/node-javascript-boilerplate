@@ -4,18 +4,21 @@
   "description": "Node JavaScript BoilerPlate",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon src/server.js"
+    "dev": "NODE_ENV=development nodemon src/server.js",
+    "start": "NODE_ENV=production node src/server.js"
   },
+  "keywords": [],
   "author": "Samran Tariq",
   "license": "MIT",
   "dependencies": {
     "config": "^3.3.6",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-pino-logger": "^7.0.0",
+    "helmet": "^6.0.0",
     "mongoose": "^6.2.4",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",

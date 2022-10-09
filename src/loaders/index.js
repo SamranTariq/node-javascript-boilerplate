@@ -5,8 +5,10 @@ import { logger } from '../utils/logger';
 
 const loaders = async ({ expressApp }) => {
   try {
-    const mongoConnection = await mongooseLoader();
-    logger.info('🥭 MongoDB Initialized');
+    // ~ Un Comment Line_No# 9, 10 to establish mongo connection
+    /*const mongoConnection = await mongooseLoader();
+     logger.info('🥭 MongoDB Initialized');*/
+
     await expressLoader({ app: expressApp });
     logger.info('🚌 Express Initialized');
     // ... more loaders can be here
