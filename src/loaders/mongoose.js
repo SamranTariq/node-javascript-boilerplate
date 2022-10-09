@@ -1,21 +1,21 @@
-import mongoose from 'mongoose';
-import { logger } from '../utils/logger';
-import { developmentError } from './helper';
+import mongoose from 'mongoose'
+import { logger } from '../utils/logger'
+import { wholeError } from './helper'
 
 export default async () => {
-  const connection = await mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  });
+    const connection = await mongoose.connect(process.env.DATABASE_URL, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+    })
 
-  mongoose.connection.on('error', function (error) {
-    developmentError(error);
-  });
+    mongoose.connection.on('error', function (error) {
+        wholeError(error)
+    })
 
-  mongoose.connection.on('open', function () {
-    logger.info('✅ Connected to MongoDB database.');
-  });
+    mongoose.connection.on('open', function () {
+        logger.info('✅ Connected to MongoDB database.')
+    })
 
-  return connection.connection;
-};
+    return connection.connection
+}

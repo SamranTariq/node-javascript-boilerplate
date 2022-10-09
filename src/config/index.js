@@ -1,9 +1,12 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv')
 
-dotenv.config();
+dotenv.config()
 
-export const server_secrets = {
-  corsOrigin: process.env.CORSORIGIN || 'http://localhost:3000',
-  port: process.env.PORT || 3000,
-  host: process.env.HOST || 'localhost',
-};
+const config = {
+    devAdminURL: 'http://localhost:3001',
+    prodAdminURL: 'https://www.admin.example.com',
+    devFrontendWebsiteURL: 'http://localhost:3000',
+    prodFrontendWebsiteURL: 'https://www.example.com',
+}
+
+module.exports = config

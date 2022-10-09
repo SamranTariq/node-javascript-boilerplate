@@ -2,14 +2,18 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Node JavaScript BoilerPlate",
-  "main": "server.js",
-  "scripts": {
-    "dev": "NODE_ENV=development nodemon src/server.js",
-    "start": "NODE_ENV=production node src/server.js"
-  },
   "keywords": [],
   "author": "Samran Tariq",
   "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "dev": "NODE_ENV=development nodemon src/server.js",
+    "start": "NODE_ENV=production node src/server.js"
+  },
   "dependencies": {
     "config": "^3.3.6",
     "cookie-parser": "^1.4.6",
@@ -24,6 +28,16 @@
     "nodemon": "^2.0.15",
     "pino": "^7.5.0",
     "pino-pretty": "^7.2.0",
+    "toml": "^3.0.0",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.1",
+    "dedent": "^0.7.0",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1"
   }
 }

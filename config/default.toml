@@ -1,0 +1,10 @@
+[server]
+
+port = 8080
+host = 'localhost'
+corsOrigin = 'http://localhost:3000'
+open = false
+
+[app]
+
+version = '🚀 Server version {0} is running 🛼'

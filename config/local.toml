@@ -1,0 +1,5 @@
+[server]
+
+port = 8081
+corsOrigin = "http://localhost:3000"
+open = true
